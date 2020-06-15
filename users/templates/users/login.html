@@ -1,0 +1,36 @@
+{% extends 'menu/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="login-page">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12"></div>
+            <div class="col-lg-8 col-sm-12">
+                <div class="card login-card mt-5 mb-3">
+                    <div class="card-body">
+                        <h1 class="text-center font-weight-bold mb-4">Login</h1>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <fieldset class="form-group">
+                                {{ form|crispy }}
+                            </fieldset>
+                            <div class="form-group">
+                                <button class="btn btn-success form-control" type="submit">Login</button>
+                                <small class="text-center">
+                                    <a href="#>Forgot Password</a>
+                                </small>
+                            </div>
+                        </form>
+                        <div class="border-top pt-3">
+                            <p class="text-center">Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'menu/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="pricing-items">
+
+        <!-- Step 1 -->
+
+        <div class="row">
+            <div class="col-12 mt-3 mb-5">
+                <h1 class="text-center font-weight-bold">
+                    Choose the Plan of your choice
+                </h1>
+            </div>
+            <div class="col-12 mt-3 mb-3 text-center">
+                <img src="{% static 'menu/images/choosefood.png' %}" width="100%">
+            </div>
+            {% for plan in plans %}
+            <div class="col-lg-4 col-sm-12 mb-3 pb-2">
+                <div class="card">
+                    <div class="text-center">
+                        <img src="{{ plan.image.url }}">
+                        <h1 class="font-weight-bold">{{ plan.name }}</h1>
+                        <p class="font-weight-bold">
+                            {{ plan.price }}
+                            <br>
+                            <small>save {{ plan.discount }} %</small>
+                        </p>
+                        <a href="{% url 'cart' %}">
+                            <button class="btn btn-success pr-5 pl-5 m-3 select-plan">Select</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

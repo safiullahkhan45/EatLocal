@@ -1,0 +1,26 @@
+{% extends 'menu/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-3 mb-3 text-center">
+                <img src="{% static 'menu/images/choosefood.png' %}" width="100%">
+            </div>
+            <div class="col-12 mb-3">
+                <h1 class="text-center font-weight-bold">
+                    Our Mission
+                </h1>
+            </div>
+            <div class="col-12 mb-5">
+                <p>
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

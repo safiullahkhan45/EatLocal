@@ -1,0 +1,59 @@
+{% extends 'menu/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="profile">
+    <div class="container-fluid">
+        <div class="profile-page mt-3">
+            <div class="row">
+                <div class="col-lg-8 col-sm-12 mt-3">
+                    <div class="row">
+                    {% for cartitem in items.meals.all %}
+                        <div class="col-6 mb-3 pb-2">
+                            <div class="">
+                                <h6>Meal {{ forloop.counter }}</h6>
+                                <a href="{% url 'deleteitem' cartitem.id %}">
+                                    <button class="btn btn-sm btn-danger">Remove Item</button>
+                                </a>
+                                <a href="{% url 'schedule' cartitem.id %}">
+                                    <button class="btn btn-sm btn-success">Schedule Meal</button>
+                                </a>
+                                <div class="text-center">
+                                    <img src="{{ cartitem.item.image.url }}" width="80%">
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 mt-3">
+                    <h3 class="font-weight-bold">{{ user.username }}'s Profile</h3>
+                    <h5 class="font-weight-bold">Your Current Plan is: {{ user.plan }}</h5>
+                    <h5 class="font-weight-bold mb-4">Change Monthly Plan</h5>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="btn btn-success form-control" type="submit">Update Profile</button>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-danger form-control" type="submit">Cancel Order</button>
+                        </div>
+                        <div class="col-6">
+                            <a href="#">
+                                <button class="btn btn-primary form-control" type="submit">Change Password</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'menu/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="menu-items">
+        <div class="row">
+            <div class="col-12 mt-3 mb-5">
+                <h1 class="text-center font-weight-bold">
+                    Our Menu
+                </h1>
+            </div>
+            {% for menu in menus %}
+            <div class="col-12 pb-3">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-12">
+                            <img src="{{ menu.image.url }}" class="show-details">
+                        </div>
+                        <div class="col-lg-8 col-sm-12 mt-3 pt-3">
+                            <h3 class="">
+                                <span class="font-weight-bold font-italic">Restaurant: </span>
+                                {{menu.restaurant}}
+                            </h3>
+                            <h4 class="">
+                                <span class="font-weight-bold font-italic">Dish: </span>
+                                {{menu.dish}}
+                            </h4>
+                            <p class="">
+                                <span class="font-weight-bold font-italic">Description: </span>
+                                {{menu.description}}
+                            </p>
+                            <a href="{% url 'pricing' %}" class="text-center">
+                                <button class="btn btn-success">Select Monthly Plan</button>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="p-2" class="menu-details">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

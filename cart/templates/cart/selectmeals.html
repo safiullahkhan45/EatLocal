@@ -1,0 +1,80 @@
+{% extends 'menu/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="pricing-items">
+
+        <!-- Step 2 -->
+
+        <div class="mb-4">
+            <div class="row">
+                <div class="col-12 mt-3 mb-5">
+                    <h1 class="text-center font-weight-bold">
+                        Add meals to your basket
+                    </h1>
+                </div>
+                <div class="col-12">
+                    <h6>{{ items.total }} out of {{ user.plan.max_meals }} meals selected:</h6>
+                </div>
+                {% for menu in menus %}
+                <div class="col-lg-4 col-sm-12 mb-3 pb-2">
+                    <div class="card">
+                        <div class="text-center">
+                            <img src="{{ menu.image.url }}" class="mb-3">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5 class="font-weight-bold float-right">{{ menu.restaurant }}</h5>
+                                </div>
+                                <div class="col-6">
+                                    <a href="{% url 'addtocart' menu.id %}">
+                                        <button class="btn btn-success btn-sm float-left mb-2 add-to-basket">Add to basket</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        {% if items.total > 0 %}
+        <div class="pricing-schedule">
+            <div class="row">
+                <div class="col-12 mt-3 mb-5 text-center">
+                    <h1 class="text-center font-weight-bold">
+                        Your Selected Meals
+                    </h1>
+                    {% if items.total == user.plan.max_meals %}
+                        <h5 class="text-danger">You have selected {{ user.plan.max_meals }} meals according to your Plan</h5>
+                        <a href="{% url 'checkout' %}">
+                            <button class="btn btn-success btn-sm mt-2 mb-2">Proceed to Payment.</button>
+                        </a>
+                    {% endif %}
+                </div>
+                {% for cartitem in items.meals.all %}
+                    <div class="col-6 mb-3 pb-2">
+                        <div class="">
+                            <h6>Meal {{ forloop.counter }}</h6>
+                            <a href="{% url 'deleteitem' cartitem.id %}">
+                                <button class="btn btn-sm btn-danger">Remove Item</button>
+                            </a>
+                            <a href="{% url 'schedule' cartitem.id %}">
+                                <button class="btn btn-sm btn-success">Schedule Meal</button>
+                            </a>
+                            <div class="text-center">
+                                <img src="{{ cartitem.item.image.url }}" width="80%">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

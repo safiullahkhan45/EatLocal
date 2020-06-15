@@ -1,0 +1,58 @@
+{% extends 'menu/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <div class="home-top">
+                <img src="{% static 'menu/images/homemeals1.jpg' %}" width="100%">
+            </div>
+            <div class="home-getstarted">
+                <h2 class="text-center font-weight-bold">Our Top Rated Menu</h2>
+                <h5 class="text-center font-weight-bold">Our Top Rated Menu</h5>
+                <a href="{% url 'pricing' %}">
+                    <button class="btn text-center">Get Started</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12 text-center mt-5">
+                <img src="{% static 'menu/images/choosefood.png' %}" width="80%">
+            </div>
+            <div class="col-lg-6 col-sm-12 pt-5 mt-5 mb-5">
+                <h2 class="font-weight-bold">How EatLocal works for you:</h2>
+                <ul class="">
+                    <li>Choose your monthly plan</li>
+                    <li>Add meals to your basket</li>
+                    <li>Select the days and time you want to enjoy your meal.</li>
+                    <li>Pick it up or have it delivered</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-sm-12 pt-5 mt-5 mb-5">
+                <h2 class="font-weight-bold">Benefits of choosing to eatlocal:</h2>
+                <ul>
+                    <li>Save money (between 5%-20% off every meal!)</li>
+                    <li>Friendly reminders for upcoming meals</li>
+                    <li>Support local businesses and hear their story</li>
+                    <li>Modify or cancel your plan at any time, no sweat!</li>
+                </ul>
+            </div>
+            <div class="col-lg-6 col-sm-12 text-center mt-5">
+                <img src="{% static 'menu/images/choosefood.png' %}" width="80%">
+            </div>
+            <div class="col-lg-12 mt-5 pt-3 text-center mb-5">
+                <img src="{% static 'menu/images/startingat.png' %}" width="20%;">
+                <h4 class="mt-2 font-weight-bold">Staring at $78.89</h4>
+                <p>You can avail as well as cancel anytime you want</p>
+                <a href="{% url 'pricing' %}">
+                    <button class="btn btn-lg btn-success">Chose Your Plan</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

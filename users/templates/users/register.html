@@ -1,0 +1,40 @@
+{% extends 'menu/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="sign-up">
+    <div class="container-fluid">
+        <div class="login-page">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 text-center">
+                    <div class="text-center mt-5" style="margin: auto;">
+                        <h2 class="font-weight-bold">Thanks for wanting to give EatLocal a try!</h2>
+                        <p>We'll need some details to get started</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="card login-card mt-5 mb-3">
+                        <div class="card-body">
+                            <h1 class="text-center font-weight-bold mb-4">Sign Up</h1>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <fieldset class="form-group">
+                                    {{ form|crispy }}
+                                </fieldset>
+                                <div class="form-group">
+                                    <button class="btn btn-success form-control" type="submit">Sign Up</button>
+                                </div>
+                            </form>
+                            <div class="border-top pt-3">
+                                <p class="text-center">Already have an account? <a href="#">Login</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
